@@ -10,8 +10,6 @@ import 'package:http/http.dart' as http;
 import '_MylistViewSoltAgendadas.dart';
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key}) : super(key: key);
-
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
@@ -153,7 +151,7 @@ class _MyHomePageState extends State<MyHomePage> {
       style: TextStyle(
           //backgroundColor: Colors.black12,
           color: Colors.yellowAccent),
-      keyboardType: TextInputType.emailAddress,
+      keyboardType: TextInputType.text,
       decoration: InputDecoration(
           filled: true,
           fillColor: Colors.black12,
@@ -217,13 +215,14 @@ class _MyHomePageState extends State<MyHomePage> {
             _getUser(_login.text, _password.text).then((map) {
               if (map.isNotEmpty) {
                 if (map[0].status == 'OK') {
-                  Navigator.push(
+                  Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => MylistViewSoltAgendadas(
-                                nome: map[0].usuarnome,
-                                usuarcodigo: map[0].usuarcodigo,
-                              ))).then((value) {
+                          builder:
+                              (context) => /*MylistViewSoltAgendadas*/ MyListPage(
+                                    nome: map[0].usuarnome,
+                                    usuarcodigo: map[0].usuarcodigo,
+                                  ))).then((value) {
                     _login.clear();
                     _password.clear();
                   });

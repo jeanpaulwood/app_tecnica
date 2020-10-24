@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'package:app_tecnica/API/_api_solicitacoesAgendadas.dart';
-import 'package:app_tecnica/_MyApp/MyApp.dart';
 import 'package:app_tecnica/_MyHome/_MyHome.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
@@ -206,8 +205,8 @@ class MylistViewSoltAgendadas extends State<MyListPage> /*StatelessWidget*/ {
               title: Text('Sair'),
               leading: Icon(Icons.home),
               onTap: () {
-                Navigator.pushReplacement(
-                    context, MaterialPageRoute(builder: (context) => MyApp()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => MyHomePage()));
               },
             ),
           ],

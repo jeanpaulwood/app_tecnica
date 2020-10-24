@@ -18,7 +18,6 @@ class _MyHomePageState extends State<MyHomePage> {
   // Variáveis
   final Connectivity _connectivity = Connectivity();
   final _formKey = GlobalKey<FormState>();
-  double width;
   bool _isOnline = true;
   TextEditingController _login = TextEditingController();
   TextEditingController _password = TextEditingController();
@@ -132,9 +131,9 @@ class _MyHomePageState extends State<MyHomePage> {
   // Widgets
   Widget container_() {
     return Container(
+      width: 280.00,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           textFieldLogin_(),
           SizedBox(height: 10),
@@ -146,67 +145,62 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Widget textFieldLogin_() {
-    return Container(
-      width: 260,
-      child: TextFormField(
-        controller: _login,
-        cursorColor: Colors.yellowAccent,
-        style: TextStyle(
-            //backgroundColor: Colors.black12,
-            color: Colors.yellowAccent),
-        keyboardType: TextInputType.text,
-        decoration: InputDecoration(
-            filled: true,
-            fillColor: Colors.black12,
-            labelText: 'Login',
-            //helperText: 'E-mail do usuário',
-            border: new OutlineInputBorder(
-              //borderRadius: new BorderRadius.circular(25.0),
-              borderSide: new BorderSide(color: Colors.yellowAccent),
-            ),
-            icon: Icon(
-              Icons.email,
-              color: Colors.yellowAccent,
-            )),
-        validator: (value) {
-          if (value.isEmpty) {
-            return 'Preencha o login';
-          }
-          return null;
-        },
-      ),
+    return TextFormField(
+      controller: _login,
+      cursorColor: Colors.yellowAccent,
+      style: TextStyle(
+          //backgroundColor: Colors.black12,
+          color: Colors.yellowAccent),
+      keyboardType: TextInputType.text,
+      decoration: InputDecoration(
+          filled: true,
+          fillColor: Colors.black12,
+          labelText: 'Login',
+          //helperText: 'E-mail do usuário',
+          border: new OutlineInputBorder(
+            //borderRadius: new BorderRadius.circular(25.0),
+            borderSide: new BorderSide(color: Colors.yellowAccent),
+          ),
+          icon: Icon(
+            Icons.email,
+            color: Colors.yellowAccent,
+          )),
+      validator: (value) {
+        if (value.isEmpty) {
+          return 'Preencha o login';
+        }
+        return null;
+      },
     );
   }
 
   Widget textFieldPassaword_() {
-    return Container(
-        width: 260,
-        child: TextFormField(
-          controller: _password,
-          cursorColor: Colors.yellowAccent,
-          style: TextStyle(
-              //backgroundColor: Colors.black12,
-              color: Colors.yellowAccent),
-          keyboardType: TextInputType.visiblePassword,
-          obscureText: true,
-          decoration: InputDecoration(
-            filled: true,
-            fillColor: Colors.black12,
-            labelText: 'Senha',
-            //helperText: 'Senha de acesso do usuário',
-            border: new OutlineInputBorder(
-              //borderRadius: new BorderRadius.circular(25.0),
-              borderSide: new BorderSide(color: Colors.yellowAccent),
-            ),
-            icon: Icon(Icons.lock, color: Colors.yellowAccent),
-          ),
-          validator: (value) {
-            if (value.isEmpty) {
-              return 'Preencha a senha';
-            }
-            return null;
-          },
-        ));
+    return TextFormField(
+      controller: _password,
+      cursorColor: Colors.yellowAccent,
+      style: TextStyle(
+          //backgroundColor: Colors.black12,
+          color: Colors.yellowAccent),
+      keyboardType: TextInputType.visiblePassword,
+      obscureText: true,
+      decoration: InputDecoration(
+        filled: true,
+        fillColor: Colors.black12,
+        labelText: 'Senha',
+        //helperText: 'Senha de acesso do usuário',
+        border: new OutlineInputBorder(
+          //borderRadius: new BorderRadius.circular(25.0),
+          borderSide: new BorderSide(color: Colors.yellowAccent),
+        ),
+        icon: Icon(Icons.lock, color: Colors.yellowAccent),
+      ),
+      validator: (value) {
+        if (value.isEmpty) {
+          return 'Preencha a senha';
+        }
+        return null;
+      },
+    );
   }
 
   Widget raisedButton_() {
@@ -224,10 +218,11 @@ class _MyHomePageState extends State<MyHomePage> {
                   Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => MyListPage(
-                                nome: map[0].usuarnome,
-                                usuarcodigo: map[0].usuarcodigo,
-                              ))).then((value) {
+                          builder:
+                              (context) => /*MylistViewSoltAgendadas*/ MyListPage(
+                                    nome: map[0].usuarnome,
+                                    usuarcodigo: map[0].usuarcodigo,
+                                  ))).then((value) {
                     _login.clear();
                     _password.clear();
                   });
@@ -253,17 +248,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.transparent,
-      body: Container(
-          width: 500,
-          decoration: BoxDecoration(
-              color: Colors.white,
-              //backgroundBlendMode: BlendMode.modulate,
-              //borderRadius: BorderRadius.circular(50.0),
-              image: DecorationImage(
-                  image: AssetImage('assets/grisweb.jpg'),
-                  fit: BoxFit.fitWidth)),
-          child: Form(key: _formKey, child: container_())),
-    );
+        backgroundColor: Colors.transparent,
+        body: Form(key: _formKey, child: container_()));
   }
 }

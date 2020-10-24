@@ -7,27 +7,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-
-      theme: ThemeData(
-
-        //primarySwatch: Colors.blue,
-        primaryColor: Colors.grey,
-        primaryColorDark: Colors.black,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-
-      ),
-      home:
-      Container(
-        decoration: BoxDecoration(
-          color: Colors.white,
-          //backgroundBlendMode: BlendMode.modulate,
-          borderRadius: BorderRadius.circular(50.0),
-          image: DecorationImage(
-            image: AssetImage('assets/grisweb.jpg'), fit: BoxFit.fitWidth
-          )
+        theme: ThemeData(
+          //primarySwatch: Colors.blue,
+          primaryColor: Colors.grey,
+          primaryColorDark: Colors.black,
+          visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
-        child: MyHomePage(),
-      ),
-    );
+        home: MyHomePage());
   }
 }

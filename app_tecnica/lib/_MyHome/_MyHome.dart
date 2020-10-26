@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 import 'package:app_tecnica/API/_api_login.dart';
+import 'package:app_tecnica/_MyApp/MyApp.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:connectivity/connectivity.dart';
@@ -35,7 +36,9 @@ class _MyHomePageState extends State<MyHomePage> {
         style: TextStyle(fontSize: 15.00, color: Colors.black),
       ),
       onPressed: () {
-        Navigator.pop(context);
+        //Navigator.pop(context);
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => MyApp()));
       },
     );
     // Configurar o AlertDialog
@@ -48,7 +51,7 @@ class _MyHomePageState extends State<MyHomePage> {
       content: Text(
         _errorTitle,
       ),
-      actions: <Widget>[okButton],
+      //actions: <Widget>[okButton],
     );
     // Exibe o AlertDialog
     showDialog(
@@ -131,7 +134,7 @@ class _MyHomePageState extends State<MyHomePage> {
   // Widgets
   Widget container_() {
     return Container(
-      width: 280.00,
+      width: 250.00,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
@@ -139,6 +142,12 @@ class _MyHomePageState extends State<MyHomePage> {
           SizedBox(height: 10),
           textFieldPassaword_(),
           raisedButton_(),
+          SizedBox(height: 10),
+          Text(
+            'V 1.0',
+            style:
+                TextStyle(backgroundColor: Colors.white, color: Colors.black87),
+          )
         ],
       ),
     );

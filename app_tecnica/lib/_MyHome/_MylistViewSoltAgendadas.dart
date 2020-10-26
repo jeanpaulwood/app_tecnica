@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:app_tecnica/API/_api_solicitacoesAgendadas.dart';
+import 'package:app_tecnica/_MyApp/MyApp.dart';
 import 'package:app_tecnica/_MyHome/_MyHome.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
@@ -196,23 +197,41 @@ class MylistViewSoltAgendadas extends State<MyListPage> /*StatelessWidget*/ {
             child: Column(
           children: <Widget>[
             UserAccountsDrawerHeader(
-                accountName: Text(widget.nome), accountEmail: Text('Teste')),
+              accountName: Text(widget.nome),
+              accountEmail: null,
+            ),
             ListTile(
               title: Text('Home'),
               leading: Icon(Icons.home),
             ),
             ListTile(
+              title: Text('Movimentar Equipamento'),
+              leading: Icon(Icons.move_to_inbox),
+              /*onTap: () {
+                Navigator.pushReplacement(
+                    context, MaterialPageRoute(builder: (context) => MyApp()));
+              },*/
+            ),
+            ListTile(
+              title: Text('Solicitações Concluídas'),
+              leading: Icon(Icons.done),
+              /*onTap: () {
+                Navigator.pushReplacement(
+                    context, MaterialPageRoute(builder: (context) => MyApp()));
+              },*/
+            ),
+            ListTile(
               title: Text('Sair'),
-              leading: Icon(Icons.home),
+              leading: Icon(Icons.exit_to_app),
               onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => MyHomePage()));
+                Navigator.pushReplacement(
+                    context, MaterialPageRoute(builder: (context) => MyApp()));
               },
             ),
           ],
         )),
         appBar: AppBar(
-          title: Text(/*nome*/ widget.nome),
+          title: Text('SOLICITAÇÕES AGENDADAS'),
         ),
         body: refreshIndicator_());
   }

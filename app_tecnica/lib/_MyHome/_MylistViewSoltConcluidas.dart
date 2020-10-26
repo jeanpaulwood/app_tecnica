@@ -1,39 +1,39 @@
 import 'dart:convert';
 import 'package:app_tecnica/API/_api_solicitacoesAgendadas.dart';
+import 'package:app_tecnica/API/_api_solicitacoesConcluidas.dart';
 import 'package:app_tecnica/_MyApp/MyApp.dart';
-import 'package:app_tecnica/_MyHome/_MylistViewSoltConcluidas.dart';
+import 'package:app_tecnica/_MyHome/_MylistViewSoltAgendadas.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 
-class MyListPage extends StatefulWidget {
+class MyListPageConcluidas extends StatefulWidget {
   final String nome;
   final int usuarcodigo;
-  const MyListPage({Key key, this.nome, this.usuarcodigo}) : super(key: key);
+  const MyListPageConcluidas({Key key, this.nome, this.usuarcodigo})
+      : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
-    return MylistViewSoltAgendadas();
+    return MylistViewSoltConcluidas();
   }
 }
 
-class MylistViewSoltAgendadas extends State<MyListPage> {
-  List<solicitacoesAgendadas> _api;
-  String url1 = 'https://jsonplaceholder.typicode.com/users';
+class MylistViewSoltConcluidas extends State<MyListPageConcluidas> {
   String url2 =
-      'http://sc9.portalunitrac.com/scriptcase/app/UNITRACGR/apptecnicos_webservice_consulta_pendentes/apptecnicos_webservice_consulta_pendentes.php';
+      'http://sc9.portalunitrac.com/scriptcase/app/UNITRACGR/apptecnicos_webservice_consulta_concluidas/apptecnicos_webservice_consulta_concluidas.php';
 
   // Futures
-  Future<List<solicitacoesAgendadas>> _getSolicitacoes() async {
+  Future<List<solicitacoesConcluidas>> _getSolicitacoes() async {
     try {
-      List<solicitacoesAgendadas> listUser = List();
+      List<solicitacoesConcluidas> listUser = List();
       final response = await http
           .post(url2, body: {'usuarcodigo': widget.usuarcodigo.toString()});
       if (response.statusCode == 200) {
         try {
           var decodeJson = jsonDecode(response.body);
           decodeJson.forEach(
-              (item) => listUser.add(solicitacoesAgendadas.fromJson(item)));
+              (item) => listUser.add(solicitacoesConcluidas.fromJson(item)));
           print(listUser.length);
         } catch (ex) {
           print('Não foi possível decodificar o json');
@@ -111,7 +111,7 @@ class MylistViewSoltAgendadas extends State<MyListPage> {
     }
   }
 
-  Widget card_(solicitacoesAgendadas _api, int index) {
+  Widget card_(solicitacoesConcluidas _api, int index) {
     return Card(
         child: Column(
       //crossAxisAlignment: CrossAxisAlignment.center,
@@ -208,7 +208,7 @@ class MylistViewSoltAgendadas extends State<MyListPage> {
           ],
         )),
         appBar: AppBar(
-          title: Text('SOLICITAÇÕES AGENDADAS'),
+          title: Text('SOLICITAÇÕES CONCLUÍDAS'),
         ),
         body: refreshIndicator_());
   }

@@ -6,15 +6,17 @@ class solicitacoesAgendadas {
   String endereco;
   String situacao;
   int soltecodigo;
+  String descricao;
 
   solicitacoesAgendadas(
       {this.dataAgendada,
-        this.placa,
-        this.tipoServico,
-        this.empresa,
-        this.endereco,
-        this.situacao,
-        this.soltecodigo});
+      this.placa,
+      this.tipoServico,
+      this.empresa,
+      this.endereco,
+      this.situacao,
+      this.soltecodigo,
+      this.descricao});
 
   solicitacoesAgendadas.fromJson(Map<String, dynamic> json) {
     dataAgendada = json['data_agendada'];
@@ -24,6 +26,7 @@ class solicitacoesAgendadas {
     endereco = json['endereco'];
     situacao = json['situacao'];
     soltecodigo = json['soltecodigo'];
+    descricao = json['soltedescricao'];
   }
 
   Map<String, dynamic> toJson() {
@@ -35,6 +38,7 @@ class solicitacoesAgendadas {
     data['endereco'] = this.endereco;
     data['situacao'] = this.situacao;
     data['soltecodigo'] = this.soltecodigo;
+    data['soltedescricao'] = this.descricao;
     return data;
   }
 }

@@ -5,6 +5,7 @@ import 'package:app_tecnica/_MyHome/_MylistViewSoltConcluidas.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
+import 'package:app_tecnica/_MyHome/_formSoltAgendadasDetails.dart';
 
 class MyListPage extends StatefulWidget {
   final String nome;
@@ -121,6 +122,12 @@ class MylistViewSoltAgendadas extends State<MyListPage> {
           height: 80,
           child: ListTile(
             onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => formSoltAgendadasDetails(
+                            api: _api,
+                          )));
               print('teste ' + index.toString());
             },
             /*leading:
